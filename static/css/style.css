@@ -1,1 +1,9 @@
 
+ .dc-chart g.row text {
+     fill: black;
+ }
+ 
+
+dc-chart { font-size: 12px; }
+   .dc-grid-top { padding-left: 10px; font-size: 14px; font-weight: bold; }
+   .dc-grid-item { padding-left: 10px; font-size: 12px; font-weight: normal; }
