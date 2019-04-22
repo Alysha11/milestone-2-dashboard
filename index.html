@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crime on London's Transport | 2018 </title>
 
- 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
+
     <link rel="stylesheet" href="static/css/dc.min.css" type="text/css" />
-   <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
 
     <script type="text/javascript" src="static/js/d3.min.js"></script>
     <script type="text/javascript" src="static/js/crossfilter.min.js"></script>
@@ -22,54 +23,62 @@
 
 <body>
 
-    <header>
-        <div class="text-center">
+
+    <div id="content">
+
+        <header class='header'>
             <h1>Crime in London's Stations 2018</h1>
-        </div>
-    </header>
+        </header>
 
-<div>
-       
-        <div id="station_selector"></div>
+        <aside class='sidebar'>
+            <div id="station_selector"></div>
+            <div class="reset-all">
+                <a href="javascript:dc.filterAll(); dc.renderAll();">Reset</a>
+            </div>
+        </aside>
+
+        <article class='line-graph'>
+            <h2> Crime across the year</h2>
+            <div id="total-crime-by-month"></div>
+        </article>
+
+        <article class='row-chart'>
+            <h2>Crime by Station</h2>
+            <div id="total-crime-by-station"></div>
+        </article>
+
+        <article class='row-chart-2'>
+            <h2>Crime by Type</h2>
+            <div id="total-crime-by-type"></div>
+        </article>
+
+        <article class='stacked-bar-chart'>
+            <h2>Theft, Robbery and Burglary</h2>
+            <div id="stacked"></div>
+        </article>
+
+        <article class='line-graph-2'>
+            <h2>Crime across the year by station</h2>
+            <div id="crime-time-station"></div>
+        </article>
+
+        <footer class='footer'>
+            This was created for education purposes using data from data.police.uk under the Open Government Licence v3.0.
+        </footer>
+
     </div>
 
 
-
+    <!--  
 
     <div>
-        <h2> Crime across 2018</h2>
-        <div id="total-crime-by-month"></div>
-    </div>
-
-    <div>
-        <h2>Crime by Type</h2>
-        <div id="total-crime-by-type"></div>
-    </div>
-    
-     <div>
-        <h2>Crime by Station</h2>
-        <div id="total-crime-by-station"></div>
-    </div>
-
-
-<div>
         <h2>Stations in North vs South</h2>
         <div id="show_north_vs_south"></div>
     </div>
-    
-      <div>
-        <h2>Theft, Robbery and Burglary</h2>
-        <div id="stacked"></div>
-    </div>
-    
-     <div>
-        <h2>Crime accross the year by station</h2>
-        <div id="crime-time-station"></div>
-    </div>
-    
-    
-    
-    
+
+     -->
+
+
 </body>
 
 </html>

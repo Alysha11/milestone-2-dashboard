@@ -1,10 +1,77 @@
 
- .dc-chart g.row text {
-     fill: black;
- }
- 
- 
+    @import url('https://fonts.googleapis.com/css?family=Work+Sans:300');
 
 dc-chart { font-size: 1em; }
    .dc-grid-top { padding-left: 10px; font-size: 14px; font-weight: bold; }
    .dc-grid-item { padding-left: 10px; font-size: 12px; font-weight: normal; }
+
+
+
+
+#content {
+    background: #C1C8E4;
+    color: #686868;
+    font-family: 'Work Sans', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(2em, auto);
+    grid-gap: 0.1em;
+    grid-template-areas: 
+    "header line-graph line-graph " 
+    "sidebar line-graph line-graph "
+    "sidebar row-chart row-chart-2 "
+    "sidebar row-chart row-chart-2 "
+    "sidebar stacked-bar-chart stacked-bar-chart "
+    "sidebar stacked-bar-chart stacked-bar-chart "
+    "sidebar line-graph-2 line-graph-2"
+    "sidebar line-graph-2 line-graph-2"
+    "footer footer footer";
+}
+
+
+.header {
+    grid-area: header;
+    background-image: url("underground.jpg")
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: white;
+}
+
+.line-graph {
+    grid-area: line-graph;
+    background: white;
+}
+
+.row-chart {
+    grid-area: row-chart;
+    background: white;
+}
+
+.row-chart-2 {
+    grid-area: row-chart-2;
+    background: white;
+
+}
+
+.stacked-bar-chart {
+    grid-area: stacked-bar-chart;
+    background: white;
+
+}
+
+.line-graph-2{
+    grid-area: line-graph-2;
+    background: white;
+}
+
+
+.footer{
+    grid-area: footer;
+    background: white;
+}
+

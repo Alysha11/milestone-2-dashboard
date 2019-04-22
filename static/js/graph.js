@@ -47,7 +47,9 @@ function show_station_selector(ndx) {
 
 }
 
-//crimes by month line chart
+
+
+//crimes by type line chart
 function show_crimes_by_month(ndx) {
 
     var dateDimension = ndx.dimension(dc.pluck("Month"));
@@ -59,7 +61,7 @@ function show_crimes_by_month(ndx) {
 
     var lineChart = dc.lineChart("#total-crime-by-month")
         .height(200)
-        .width(1360)
+        .width(990)
         .dimension(dateDimension)
         .group(dateGroup)
         .renderHorizontalGridLines(true)
@@ -70,7 +72,7 @@ function show_crimes_by_month(ndx) {
 
 };
 
-
+//crime by type row chart
 function show_crimes_by_type(ndx) {
 
     var typeDimension = ndx.dimension(dc.pluck("Crime"));
@@ -79,12 +81,14 @@ function show_crimes_by_type(ndx) {
     var rowChart = dc.rowChart("#total-crime-by-type")
         .height(350)
         .width(500)
+        .ordinalColors(['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb'])
         .dimension(typeDimension)
         .group(typeGroup);
 
 
 };
 
+//crime by station row chart
 function show_crimes_by_station(ndx) {
 
     var stationDimension = ndx.dimension(dc.pluck("Location"));
@@ -92,8 +96,8 @@ function show_crimes_by_station(ndx) {
 
 
     var rowChart = dc.rowChart("#total-crime-by-station")
-        .height(500)
-        .width(1360)
+        .height(350)
+        .width(500)
         .ordinalColors(['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb'])
         .dimension(stationDimension)
         .group(stationGroup);
@@ -166,7 +170,7 @@ function show_theft_distribution(ndx) {
 
 
     var stackedChart = dc.barChart("#stacked")
-        .width(1350)
+        .width(1100)
         .height(500)
         .dimension(locationDimension)
         .group(bicycleTheftByStation, "Bicycle theft")
@@ -188,6 +192,8 @@ function show_theft_distribution(ndx) {
         .legend(dc.legend().x(50).y(0).itemHeight(13).gap(5).horizontal(true).autoItemWidth(true).itemWidth(60))
         .xAxisLabel("Station")
         .yAxisLabel("Incidents")
+        .ordinalColors(['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb'])
+
         .renderHorizontalGridLines(true);
 
     stackedChart.margins().right = 100;
@@ -219,7 +225,7 @@ function showCrimeTimeStation(ndx) {
     var compositeChart = dc.compositeChart('#crime-time-station');
     compositeChart
         .width(990)
-        .height(200)
+        .height(300)
         .dimension(date_dim)
         .x(d3.time.scale().domain([minDate, maxDate]))
         .legend(dc.legend().x(50).y(0).itemHeight(13).gap(5).horizontal(true).autoItemWidth(true).itemWidth(60))
