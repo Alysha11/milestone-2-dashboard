@@ -26,7 +26,7 @@ function makeGraphs(error, data) {
     show_crimes_by_month(ndx);
     show_crimes_by_type(ndx);
     show_crimes_by_station(ndx);
-    //show_north_vs_south(ndx);
+    show_north_vs_south(ndx);
     show_theft_distribution(ndx);
     showCrimeTimeStation(ndx);
     dc.renderAll();
@@ -105,18 +105,31 @@ function show_crimes_by_station(ndx) {
 
 };
 
-/*function show_north_vs_south(ndx) {
+
+function show_north_vs_south(ndx) {
 
 
     var northSouthDimension = ndx.dimension(function(d) {
-        if (d.Location === ' Waterloo ')
-            return "South";
-        else if (d.Location === ' London  Bridge ')
-            return "South";
-        else if (d.Location === ' Euston ')
-            return "North";
-    });
+        switch (true) {
+            case (d.Location == " Kings Cross "):
+            case (d.Location == " London Victoria "):
+            case (d.Location == " Euston "):
+            case (d.Location == " Liverpool Street "):
+            case (d.Location == " Paddington "):
+            case (d.Location == " Charing Cross "):
+            case (d.Location == " Marylebone "):
+            case (d.Location == " Blackfriars "):
+            case (d.Location == " Moorgate "):
+            case (d.Location == " Cannon Street "):
 
+                return "North";
+
+            case (d.Location == " London Bridge "):
+            case (d.Location == "Waterloo"):
+                return "South";
+
+        }
+    });
 
 
     var northSouthGroup = northSouthDimension.group();
@@ -129,8 +142,9 @@ function show_crimes_by_station(ndx) {
         .label(function(d) {
             return d.key + ': ' + d.value;
         });
+}
 
-};*/
+//Theft, Robbery and Burglary stacked bar chart
 
 function show_theft_distribution(ndx) {
 
@@ -200,7 +214,7 @@ function show_theft_distribution(ndx) {
 
 };
 
-
+//crime by station across the year composite chart
 function showCrimeTimeStation(ndx) {
     var date_dim = ndx.dimension(dc.pluck('Month'));
     var minDate = date_dim.bottom(1)[0].Month;

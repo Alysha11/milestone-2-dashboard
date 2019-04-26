@@ -32,9 +32,16 @@
 
         <aside class='sidebar'>
             <div id="station_selector"></div>
+
+            <h2>Stations in North vs South</h2>
+            <div id="show_north_vs_south"></div>
+
             <div class="reset-all">
-                <a href="javascript:dc.filterAll(); dc.renderAll();">Reset</a>
+                <button class='button' type="button"><a href="javascript:dc.filterAll(); dc.renderAll();">Reset</a></button>
             </div>
+    
+            <p> <span><i class="fas fa-info-circle"></i> </span> More on crime categories</p>
+
         </aside>
 
         <article class='line-graph'>
@@ -58,7 +65,7 @@
         </article>
 
         <article class='line-graph-2'>
-            <h2>Crime across the year by station</h2>
+            <h2>Crime by month (stations with most crime)</h2>
             <div id="crime-time-station"></div>
         </article>
 
@@ -69,14 +76,6 @@
     </div>
 
 
-    <!--  
-
-    <div>
-        <h2>Stations in North vs South</h2>
-        <div id="show_north_vs_south"></div>
-    </div>
-
-     -->
 
 
 </body>
