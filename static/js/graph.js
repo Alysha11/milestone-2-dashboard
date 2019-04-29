@@ -48,6 +48,17 @@ function show_station_selector(ndx) {
 }
 
 
+//to hide and display catagory explanation table
+function myFunction() {
+  var catTable = document.getElementById("table");
+  if (catTable.style.display === 'none'){
+      catTable.style.display = 'block';
+  } else{
+     catTable.style.display = 'none' 
+  }
+  
+}
+
 
 //crimes by type line chart
 function show_crimes_by_month(ndx) {
@@ -62,6 +73,7 @@ function show_crimes_by_month(ndx) {
     var lineChart = dc.lineChart("#total-crime-by-month")
         .height(200)
         .width(990)
+        .useViewBoxResizing(true)
         .dimension(dateDimension)
         .group(dateGroup)
         .renderHorizontalGridLines(true)
@@ -81,7 +93,8 @@ function show_crimes_by_type(ndx) {
     var rowChart = dc.rowChart("#total-crime-by-type")
         .height(350)
         .width(500)
-        .ordinalColors(['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb'])
+        .useViewBoxResizing(true)
+        .ordinalColors(d3.scale.category20().range())
         .dimension(typeDimension)
         .group(typeGroup);
 
@@ -98,12 +111,14 @@ function show_crimes_by_station(ndx) {
     var rowChart = dc.rowChart("#total-crime-by-station")
         .height(350)
         .width(500)
-        .ordinalColors(['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb'])
+        .useViewBoxResizing(true)
+        .ordinalColors(d3.scale.category20().range())
         .dimension(stationDimension)
         .group(stationGroup);
 
 
 };
+
 
 
 function show_north_vs_south(ndx) {
@@ -186,6 +201,7 @@ function show_theft_distribution(ndx) {
     var stackedChart = dc.barChart("#stacked")
         .width(1100)
         .height(500)
+        .useViewBoxResizing(true)
         .dimension(locationDimension)
         .group(bicycleTheftByStation, "Bicycle theft")
         .stack(otherTheftByStation, "Other theft")
@@ -206,8 +222,7 @@ function show_theft_distribution(ndx) {
         .legend(dc.legend().x(50).y(0).itemHeight(13).gap(5).horizontal(true).autoItemWidth(true).itemWidth(60))
         .xAxisLabel("Station")
         .yAxisLabel("Incidents")
-        .ordinalColors(['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb'])
-
+        .ordinalColors(d3.scale.category20().range())
         .renderHorizontalGridLines(true);
 
     stackedChart.margins().right = 100;
@@ -237,32 +252,34 @@ function showCrimeTimeStation(ndx) {
     var londonBridgeCrimesByMonth = date_dim.group().reduceSum(spend_by_name(' London Bridge '));
 
     var compositeChart = dc.compositeChart('#crime-time-station');
-    compositeChart
-        .width(990)
-        .height(300)
-        .dimension(date_dim)
-        .x(d3.time.scale().domain([minDate, maxDate]))
-        .legend(dc.legend().x(50).y(0).itemHeight(13).gap(5).horizontal(true).autoItemWidth(true).itemWidth(60))
-        .yAxisLabel("Incidents")
-        .renderHorizontalGridLines(true)
-        .compose([
-            dc.lineChart(compositeChart)
-            .colors('green')
-            .group(victoriaCrimesByMonth, ' London Victoria '),
-            dc.lineChart(compositeChart)
-            .colors('red')
-            .group(waterlooCrimesByMonth, 'Waterloo'),
-            dc.lineChart(compositeChart)
-            .colors('blue')
-            .group(eustonCrimesByMonth, ' Euston '),
-            dc.lineChart(compositeChart)
-            .colors('orange')
-            .group(liverpoolStreetCrimesByMonth, ' Liverpool Street '),
-            dc.lineChart(compositeChart)
-            .colors('pink')
-            .group(londonBridgeCrimesByMonth, ' London Bridge ')
-        ])
-        .brushOn(false)
+     compositeChart
+         .width(990)
+         .height(300)
+         .useViewBoxResizing(true)
+         .dimension(date_dim)
+         .x(d3.time.scale().domain([minDate, maxDate]))
+         .legend(dc.legend().x(50).y(0).itemHeight(13).gap(5).horizontal(true).autoItemWidth(true).itemWidth(60))
+         .yAxisLabel("Incidents")
+         .renderHorizontalGridLines(true)
+         .compose([
+             dc.lineChart(compositeChart)
+             .colors('#0099CC')
+             .group(victoriaCrimesByMonth, ' London Victoria '),
+             dc.lineChart(compositeChart)
+             .colors('#66CCCC')
+             .group(waterlooCrimesByMonth, 'Waterloo'),
+             dc.lineChart(compositeChart)
+             .colors('#000000')
+             .group(eustonCrimesByMonth, ' Euston '),
+             dc.lineChart(compositeChart)
+             .colors('#CC3333')
+             .group(liverpoolStreetCrimesByMonth, ' Liverpool Street '),
+             dc.lineChart(compositeChart)
+             .colors('#868F98')
+             .group(londonBridgeCrimesByMonth, ' London Bridge ')
+         ])
+         .brushOn(false)
+
 
 
 

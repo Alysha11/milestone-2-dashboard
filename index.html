@@ -31,42 +31,107 @@
         </header>
 
         <aside class='sidebar'>
-            <div id="station_selector"></div>
 
-            <h2>Stations in North vs South</h2>
-            <div id="show_north_vs_south"></div>
+            <div class='sidebar-grid'>
+                <p>Filter on station:</p>
+                <div id="station_selector"></div>
 
-            <div class="reset-all">
-                <button class='button' type="button"><a href="javascript:dc.filterAll(); dc.renderAll();">Reset</a></button>
+                <p>Stations in North vs South</p>
+                <div id="show_north_vs_south"></div>
+
+
+                <div class="reset-all">
+                    <button class='button' type="button"><a href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a></button>
+                </div>
+
+                <p class = "crime-cat-info" onclick="myFunction()"> <span><i class="fas fa-info-circle"></i> </span> More on crime categories</p>
+                <table id="table" 
+                    <tr>
+                        <th>Crime Categories</th>
+                        <th>What does it mean?</th>
+                    </tr>
+                    <tr>
+                        <td>Violence and sexual offences</td>
+                        <td>Includes offences against the person such as common assaults, Grievous Bodily Harm and sexual offences.</td>
+                    </tr>
+                    <tr>
+                        <td>Other theft</td>
+                        <td>Includes theft by an employee, blackmail and making off without payment.</td>
+                    </tr>
+                    <tr>
+                        <td>Public order</td>
+                        <td>Includes offences which cause fear, alarm or distress.</td>
+                    </tr>
+                    <tr>
+                        <td>Theft from the person</td>
+                        <td>Includes crimes that involve theft directly from the victim (including handbag, wallet, cash, mobile phones) but without the use or threat of physical force.</td>
+                    </tr>
+                    <tr>
+                        <td>Shoplifting</td>
+                        <td>Includes theft from shops or stalls.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Drugs</td>
+                        <td>Includes offences related to possession, supply and production.</td>
+                    </tr>
+                    <tr>
+                        <td>Bicycle theft</td>
+                        <td>Includes the taking without consent or theft of a pedal cycle.</td>
+                    </tr>
+                    <tr>
+                        <td>Other crime</td>
+                        <td>Includes forgery, perjury and other miscellaneous crime.</td>
+                    </tr>
+                    <tr>
+                        <td>Criminal damage and arson</td>
+                        <td>Includes damage to buildings and vehicles and deliberate damage by fire.</td>
+                    </tr>
+                    <tr>
+                        <td>Possession of weapons</td>
+                        <td>Includes possession of a weapon, such as a firearm or knife.</td>
+                    </tr>
+                    <tr>
+                        <td>Burglary</td>
+                        <td>Includes offences where a person enters a house or other building with the intention of stealing.</td>
+                    </tr>
+                    <tr>
+                        <td>Robbery</td>
+                        <td>Includes offences where a person uses force or threat of force to steal.</td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td>Vehicle crime</td>
+                        <td>Includes theft from or of a vehicle or interference with a vehicle.</td>
+                    </tr>
+
+                </table>
             </div>
-    
-            <p> <span><i class="fas fa-info-circle"></i> </span> More on crime categories</p>
-
         </aside>
 
         <article class='line-graph'>
             <h2> Crime across the year</h2>
-            <div id="total-crime-by-month"></div>
+            <div id="total-crime-by-month" class="graph"></div>
         </article>
 
         <article class='row-chart'>
             <h2>Crime by Station</h2>
-            <div id="total-crime-by-station"></div>
+            <div id="total-crime-by-station" class="graph"></div>
         </article>
 
         <article class='row-chart-2'>
             <h2>Crime by Type</h2>
-            <div id="total-crime-by-type"></div>
+            <div id="total-crime-by-type" class="graph"></div>
         </article>
 
         <article class='stacked-bar-chart'>
             <h2>Theft, Robbery and Burglary</h2>
-            <div id="stacked"></div>
+            <div id="stacked" class="graph"></div>
         </article>
 
         <article class='line-graph-2'>
             <h2>Crime by month (stations with most crime)</h2>
-            <div id="crime-time-station"></div>
+            <div id="crime-time-station" class="graph"></div>
         </article>
 
         <footer class='footer'>
