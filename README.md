@@ -161,7 +161,8 @@ Selected ‘master’ from source dropdown.
  Saved. Page was then published on GitHub Pages. 
 
 This project can be cloned by pasting the following into the terminal:
-_git clone https://github.com/Alysha11/milestone-2-dashboard.git_  
+git clone https://github.com/Alysha11/milestone-2-dashboard.git
+
 ### Credits
 
 **Content**
