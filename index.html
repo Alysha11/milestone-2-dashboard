@@ -6,23 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crime on London's Transport | 2018 </title>
-
+<!--Favicon--->
+    <link rel="shortcut icon" href="static/images/favicon.ico" type="image/ico">
+<!-- CSS stylesheets-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
-
     <link rel="stylesheet" href="static/css/dc.min.css" type="text/css" />
     <link rel="stylesheet" href="static/css/style.css" type="text/css" />
-
+<!-- Javascript-->
     <script type="text/javascript" src="static/js/d3.min.js"></script>
     <script type="text/javascript" src="static/js/crossfilter.min.js"></script>
     <script type="text/javascript" src="static/js/dc.min.js"></script>
     <script type="text/javascript" src="static/js/queue.min.js"></script>
 
     <script type="text/javascript" src="static/js/graph.js"></script>
-
 </head>
 
 <body>
-
 
     <div id="content">
 
@@ -39,13 +38,14 @@
                 <p>Stations in North vs South</p>
                 <div id="show_north_vs_south"></div>
 
-
+<!--reset button-->
                 <div class="reset-all">
-                    <button class='button' type="button"><a href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a></button>
+                    <a class='button' href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
                 </div>
-
-                <p class = "crime-cat-info" onclick="myFunction()"> <span><i class="fas fa-info-circle"></i> </span> More on crime categories</p>
-                <table id="table" 
+                
+<!--info table-->
+                <p class = "crime-cat-info" onclick= "showHideInfoTable()"> <span><i class="fas fa-info-circle"></i> </span> More on crime categories</p>
+                <table id="table" class = "hide">
                     <tr>
                         <th>Crime Categories</th>
                         <th>What does it mean?</th>
@@ -99,7 +99,6 @@
                         <td>Robbery</td>
                         <td>Includes offences where a person uses force or threat of force to steal.</td>
                     </tr>
-                    </tr>
                     <tr>
                         <td>Vehicle crime</td>
                         <td>Includes theft from or of a vehicle or interference with a vehicle.</td>
@@ -108,7 +107,7 @@
                 </table>
             </div>
         </aside>
-
+<!--Graphs-->
         <article class='line-graph'>
             <h2> Crime across the year</h2>
             <div id="total-crime-by-month" class="graph"></div>
@@ -133,15 +132,12 @@
             <h2>Crime by month (stations with most crime)</h2>
             <div id="crime-time-station" class="graph"></div>
         </article>
-
+ <!--Footer-->
         <footer class='footer'>
             This was created for education purposes using data from data.police.uk under the Open Government Licence v3.0.
         </footer>
 
     </div>
-
-
-
 
 </body>
 

@@ -22,12 +22,12 @@ function makeGraphs(error, data) {
     });
 
     var ndx = crossfilter(data);
-    show_station_selector(ndx)
-    show_crimes_by_month(ndx);
-    show_crimes_by_type(ndx);
-    show_crimes_by_station(ndx);
-    show_north_vs_south(ndx);
-    show_theft_distribution(ndx);
+    showStationSelector(ndx)
+    showCrimesByMonth(ndx);
+    showCrimesByType(ndx);
+    showCrimesByStation(ndx);
+    showNorthVsSouth(ndx);
+    showTheftDistribution(ndx);
     showCrimeTimeStation(ndx);
     dc.renderAll();
 
@@ -35,8 +35,7 @@ function makeGraphs(error, data) {
 };
 
 //station selector
-
-function show_station_selector(ndx) {
+function showStationSelector(ndx) {
 
     var stationDimension = ndx.dimension(dc.pluck("Location"));
     var stationGroup = stationDimension.group();
@@ -44,28 +43,27 @@ function show_station_selector(ndx) {
         .dimension(stationDimension)
         .group(stationGroup)
         .promptText('Select Station');
-
 }
 
 
 //to hide and display catagory explanation table
-function myFunction() {
-  var catTable = document.getElementById("table");
-  if (catTable.style.display === 'none'){
-      catTable.style.display = 'block';
+
+
+function showHideInfoTable() {
+  var catTable = document.getElementById("table").style;
+  if (catTable.display === 'none' || catTable.display === ''){
+      catTable.display = 'block';
   } else{
-     catTable.style.display = 'none' 
+     catTable.display = 'none' 
   }
   
 }
 
-
 //crimes by type line chart
-function show_crimes_by_month(ndx) {
+function showCrimesByMonth(ndx) {
 
     var dateDimension = ndx.dimension(dc.pluck("Month"));
     var dateGroup = dateDimension.group();
-
 
     var maxDate = dateDimension.top(1)[0].Month;
     var minDate = dateDimension.bottom(1)[0].Month;
@@ -80,12 +78,10 @@ function show_crimes_by_month(ndx) {
         .x(d3.time.scale().domain([minDate, maxDate]));
     lineChart.yAxis().ticks(5)
 
-
-
 };
 
 //crime by type row chart
-function show_crimes_by_type(ndx) {
+function showCrimesByType(ndx) {
 
     var typeDimension = ndx.dimension(dc.pluck("Crime"));
     var typeGroup = typeDimension.group();
@@ -98,15 +94,13 @@ function show_crimes_by_type(ndx) {
         .dimension(typeDimension)
         .group(typeGroup);
 
-
 };
 
 //crime by station row chart
-function show_crimes_by_station(ndx) {
+function showCrimesByStation(ndx) {
 
     var stationDimension = ndx.dimension(dc.pluck("Location"));
     var stationGroup = stationDimension.group();
-
 
     var rowChart = dc.rowChart("#total-crime-by-station")
         .height(350)
@@ -115,14 +109,12 @@ function show_crimes_by_station(ndx) {
         .ordinalColors(d3.scale.category20().range())
         .dimension(stationDimension)
         .group(stationGroup);
-
-
+        
 };
 
 
-
-function show_north_vs_south(ndx) {
-
+//Stations in the North Vs South Pie chart
+function showNorthVsSouth(ndx) {
 
     var northSouthDimension = ndx.dimension(function(d) {
         switch (true) {
@@ -161,7 +153,7 @@ function show_north_vs_south(ndx) {
 
 //Theft, Robbery and Burglary stacked bar chart
 
-function show_theft_distribution(ndx) {
+function showTheftDistribution(ndx) {
 
 
     function crimeTypeByStation(dimension, crime) {
@@ -279,8 +271,10 @@ function showCrimeTimeStation(ndx) {
              .group(londonBridgeCrimesByMonth, ' London Bridge ')
          ])
          .brushOn(false)
-
-
+         
+         
+         
+         
 
 
 }
